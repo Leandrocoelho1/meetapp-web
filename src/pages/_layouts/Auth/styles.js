@@ -47,7 +47,7 @@ export const Content = styled.div`
 
     span {
       font-size: 12px;
-      color: #E95818;
+      color: #e95818;
       align-self: flex-start;
       margin-left: 20px;
       margin-top: -8px;
@@ -66,18 +66,18 @@ export const Content = styled.div`
       transition: background 0.2s ease-in-out;
 
       &:hover {
-        background: ${darken(0.04, '#f94d6a')}
+        background: ${darken(0.04, '#f94d6a')};
       }
     }
-
   }
-      a {
-        color: #fff;
-        font-size: 16px;
-        opacity: 0.6;
-        transition: opacity 0.2s;
+  a {
+    color: #fff;
+    font-size: 16px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
 
-        &:hover {
-          opacity: 0.8;
-        }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 `;
