@@ -51,7 +51,7 @@ export const Header = styled.div`
     }
   }
 
-  button + button {
+  a + button {
     margin-left: 10px;
     background: #d44059;
     transition: background 0.2s ease-in-out;

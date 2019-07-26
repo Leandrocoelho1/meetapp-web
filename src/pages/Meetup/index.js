@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { MdEdit, MdCancel, MdDateRange, MdLocationOn } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { utcToZonedTime } from 'date-fns-tz';
+import { toast } from 'react-toastify';
 
 import { Container, Header, Content, Details, Loading } from './styles';
 import api from '~/services/api';
+import history from '~/services/history';
 
 export default function Meetup(props) {
   const [loading, setLoading] = useState(true);
   const [meetup, setMeetup] = useState({});
+  const { match } = props;
 
   useEffect(() => {
     async function getMeetup() {
-      const { match } = props;
-
       const response = await api.get(`meetups/organizing/${match.params.id}`);
 
       const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -32,7 +34,13 @@ export default function Meetup(props) {
     }
 
     getMeetup();
-  }, [loading, props]);
+  }, [loading, match.params.id, props]);
+
+  async function handleCancel() {
+    await api.delete(`meetups/${match.params.id}`);
+    toast.success('Meetup cancelado com sucesso');
+    history.push('/dashboard');
+  }
 
   return loading ? (
     <Container>
@@ -44,11 +52,13 @@ export default function Meetup(props) {
         <h1>{meetup.title}</h1>
 
         <nav>
-          <button type="button">
-            <MdEdit />
-            Editar
-          </button>
-          <button type="button">
+          <Link to={`/meetup/edit/${match.params.id}`}>
+            <button type="button">
+              <MdEdit />
+              Editar
+            </button>
+          </Link>
+          <button type="button" onClick={handleCancel}>
             <MdCancel />
             Cancelar
           </button>
