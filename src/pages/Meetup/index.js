@@ -51,18 +51,21 @@ export default function Meetup(props) {
       <Header>
         <h1>{meetup.title}</h1>
 
-        <nav>
-          <Link to={`/meetup/edit/${match.params.id}`}>
-            <button type="button">
-              <MdEdit />
-              Editar
+        {!meetup.past && (
+          <nav>
+            <Link to={`/meetup/edit/${match.params.id}`}>
+              <button type="button">
+                <MdEdit />
+                Editar
+              </button>
+            </Link>
+
+            <button type="button" onClick={handleCancel}>
+              <MdCancel />
+              Cancelar
             </button>
-          </Link>
-          <button type="button" onClick={handleCancel}>
-            <MdCancel />
-            Cancelar
-          </button>
-        </nav>
+          </nav>
+        )}
       </Header>
 
       <Content>
