@@ -59,13 +59,3 @@ export default function Dashboard() {
     </Container>
   );
 }
-
-// createdAt: "2019-07-21T11:44:23.400Z"
-// date: "2019-07-25T23:00:00.000Z"
-// description: "Meetup about NodeJs sobre criação de APIs e modelagem de banco de dados com sequelize"
-// file_id: 2
-// id: 7
-// location: "Patties Berrini"
-// past: false
-// title: "NodeJS MeetApp"
-// updatedAt: "2019-07-21T11:44:23.400Z"
